@@ -14,11 +14,11 @@ st.set_page_config(
 )
 
 st.title("🧱 Formwork Kitting & BoQ Optimization")
-st.write(
-    "Yeh web app synthetic data par trained ML models use karke "
-    "**formwork area**, **cost**, **BoQ adjustment**, aur **weekly demand** "
-    "estimate karta hai."
-)
+# st.write(
+#     "Yeh web app synthetic data par trained ML models use karke "
+#     "**formwork area**, **cost**, **BoQ adjustment**, aur **weekly demand** "
+#     "estimate karta hai."
+# )
 st.markdown("---")
 
 
@@ -61,12 +61,12 @@ tab1, tab2, tab3 = st.tabs(
 with tab1:
     st.subheader("1️⃣ Element Estimator – Area & Cost")
 
-    st.write(
-        "Yahan tum ek typical formwork element (column/beam/slab/wall) "
-        "ke dimensions daaloge, aur app: \n"
-        "- theoretical **formwork area** calculate karega, "
-        "- cost model se **estimated cost** batayega."
-    )
+    # st.write(
+    #     "Yahan tum ek typical formwork element (column/beam/slab/wall) "
+    #     "ke dimensions daaloge, aur app: \n"
+    #     "- theoretical **formwork area** calculate karega, "
+    #     "- cost model se **estimated cost** batayega."
+    # )
 
     # Form for inputs
     with st.form("element_estimator_form"):
@@ -188,9 +188,9 @@ with tab1:
         st.markdown(
             """
             **Interpretation:**
-            - Area formula se deterministic calculation milta hai.  
-            - ML cost model overheads, wastage variation, etc. ko indirectly capture karta hai.  
-            - Difference ka use risk buffer aur budget planning ke liye ho sakta hai.
+            - The area-based formula provides a deterministic calculation of the required quantity. 
+            - The ML-based cost model captures indirect factors such as overheads, material wastage variability, and site-specific uncertainties.  
+            - The difference between the two estimates can be leveraged as a risk buffer for contingency allocation and more robust budget planning.
             """
         )
 
@@ -201,15 +201,15 @@ with tab2:
     st.subheader("2️⃣ BoQ Optimizer – Planned vs Recommended")
 
     st.write(
-        "Yahan tum kisi BoQ item ke liye **planned formwork area** daal sakte ho, "
-        "aur model suggest karega ki isko kitna adjust kiya ja sakta hai "
-        "(over-estimated ya under-estimated)."
+        "Here, you can input the planned formwork area for a specific BoQ item, and"
+        "the model will recommend the appropriate adjustment—indicating whether the"
+        "estimate is potentially overestimated or underestimated."
     )
 
     if boq_model is None:
         st.error(
-            "BoQ adjustment model (`boq_adjustment_model.pkl`) load nahi hua. "
-            "Pehle training script chala ke model generate karo."
+            "BoQ adjustment model (`boq_adjustment_model.pkl`) is not loaded. "
+            "First, execute the training script to generate the model file.."
         )
     else:
         with st.form("boq_optimizer_form"):
@@ -397,12 +397,12 @@ with tab2:
                 with cC:
                     st.metric("Estimated Saving", f"₹ {saving:,.0f}")
 
-            st.markdown(
-                """
-                **Note:** Adjustment factor synthetic dataset se learned hai.  
-                Real deployment mein is model ko actual project history se fine-tune kiya ja sakta hai.
-                """
-            )
+            # st.markdown(
+            #     """
+            #     **Note:** Adjustment factor synthetic dataset se learned hai.  
+            #     Real deployment mein is model ko actual project history se fine-tune kiya ja sakta hai.
+            #     """
+            # )
 
 # =========================================================
 # TAB 3: WEEKLY DEMAND FORECAST
@@ -411,14 +411,13 @@ with tab3:
     st.subheader("3️⃣ Weekly Demand Forecast – Inventory Planning")
 
     st.write(
-        "Yahan tum ek week number choose karoge, aur model estimate karega "
-        "ki us week me total kitna formwork area ka kaam hone wala hai "
-        "(saare elements combine karke)."
+        "Select a week number, and the model will estimate the total formwork area "
+        "required for that week across all project elements."
     )
 
     if inv_model is None:
         st.error(
-            "Inventory demand model (`inventory_weekly_demand_model.pkl`) load nahi hua."
+            "Inventory demand model (`inventory_weekly_demand_model.pkl`) is not loaded."
         )
     else:
         c1, c2 = st.columns([2, 1])
@@ -443,8 +442,8 @@ with tab3:
             )
         with cB:
             st.write(
-                "Is value ka use tum inventory planning ke liye kar sakte ho – "
-                "itna formwork ready hona chahiye is week ke aas paas."
+                "Use this value for inventory planning – ensure sufficient formwork "
+                "is available by this week."
             )
 
         st.line_chart(
@@ -455,5 +454,4 @@ with tab3:
 
         st.caption(
             "Chart shows model-predicted total formwork area demand per week "
-            "(synthetic project schedule based)."
         )

@@ -15,7 +15,7 @@ st.set_page_config(
 
 st.title("🧱 Formwork Kitting & BoQ Optimization")
 st.write(
-    "This web app uses machine learning models trained on synthetic data to estimate "
+    "This web app uses machine learning models to estimate "
     "**formwork area**, **cost**, **BoQ adjustments**, and **weekly demand forecasts**."
 )
 st.markdown("---")
@@ -60,12 +60,12 @@ tab1, tab2, tab3 = st.tabs(
 with tab1:
     st.subheader("1️⃣ Element Estimator – Area & Cost")
 
-    # st.write(
-    #     "Yahan tum ek typical formwork element (column/beam/slab/wall) "
-    #     "ke dimensions daaloge, aur app: \n"
-    #     "- theoretical **formwork area** calculate karega, "
-    #     "- cost model se **estimated cost** batayega."
-    # )
+    st.write(
+        "Enter the dimensions of a typical formwork element (column/beam/slab/wall), "
+        "and the application will:\n"
+        "- Calculate the theoretical **formwork area**,\n"
+        "- Provide an **estimated cost** based on the ML cost model."
+    )
 
     # Form for inputs
     with st.form("element_estimator_form"):

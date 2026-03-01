@@ -14,11 +14,10 @@ st.set_page_config(
 )
 
 st.title("🧱 Formwork Kitting & BoQ Optimization")
-# st.write(
-#     "Yeh web app synthetic data par trained ML models use karke "
-#     "**formwork area**, **cost**, **BoQ adjustment**, aur **weekly demand** "
-#     "estimate karta hai."
-# )
+st.write(
+    "This web app uses machine learning models trained on synthetic data to estimate "
+    "**formwork area**, **cost**, **BoQ adjustments**, and **weekly demand forecasts**."
+)
 st.markdown("---")
 
 
